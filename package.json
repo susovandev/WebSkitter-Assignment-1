@@ -6,7 +6,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "npx nodemon main.js",
-		"start": "node main.js"
+		"start": "node main.js",
+		"format:check": "prettier -c \"app/**/*.js\"",
+		"format:fix": "prettier -w \"app/**/*.js\""
 	},
 	"keywords": [],
 	"author": "",
@@ -14,6 +16,10 @@
 	"type": "commonjs",
 	"dependencies": {
 		"dotenv": "^17.2.3",
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"mongoose": "^9.0.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.6.2"
 	}
 }

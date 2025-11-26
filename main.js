@@ -1,9 +1,18 @@
 const app = require('./app/app');
 const config = require('./app/config/config');
+const connectDB = require('./app/db/db');
 
-// Server Listen
-app.listen(() => {
-	console.log(
-		`Server running in ${config.NODE_ENV} mode on http://localhost:${config.PORT}`,
-	);
-});
+// Connect to database and start server
+connectDB()
+	.then(() => {
+		app.listen(() => {
+			console.log(
+				`Server running in ${config.NODE_ENV} mode on http://localhost:${config.PORT}`,
+			);
+		});
+	})
+	.catch((error) => {
+		// Exit with failure
+		console.error(`Error connecting to database: ${error.message}`);
+		process.exit(1);
+	});
