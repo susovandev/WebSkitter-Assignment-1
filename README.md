@@ -28,7 +28,7 @@ A REST API for managing products using Node.js backend built using **Express**, 
 - [Request/Response Examples](#requestresponse-examples)
 - [Error Handling](#error-handling)
 - [Validation Rules](#validation-rules)
-- [Best Practices](#best-practices)
+- [Postman Collection](#postman-collection)
 
 ---
 
@@ -361,4 +361,10 @@ file.
 - `category`: Required, string,
 - `inStock`: Optional, boolean
 
+---
+## 📬 Postman Collection
+A Postman collection is provided in the `postman/Product Management.postman_collection.json` file. You can download this file and import it into Postman to easily test the API endpoints. 
+You can import this collection into Postman to quickly access and test all the available API routes.
+
+👉 **[Download Postman Collection](./postman/Product%20Management.postman_collection.json)**  
 ---
