@@ -46,6 +46,7 @@ class ProductService {
 		return newProduct;
 	}
 	/**
+	 * @param {String} productId
 	 * @param {Object} productData
 	 * @description Update an existing product.
 	 * @throws {ApiError} if product not found.
@@ -55,6 +56,19 @@ class ProductService {
 		const product = await this.productModel.findByIdAndUpdate({ _id: productId }, productData, {
 			new: true,
 		});
+		if (!product) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
+		}
+		return product;
+	}
+	/**
+	 * @param {String} productId
+	 * @description Remove a product by ID.
+	 * @throws {ApiError} if product not found.
+	 * @returns {Object} deleted product Object.
+	 */
+	async delete(productId) {
+		const product = await this.productModel.findByIdAndDelete({ _id: productId });
 		if (!product) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
 		}

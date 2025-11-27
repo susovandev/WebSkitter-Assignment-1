@@ -44,6 +44,13 @@ class ProductController {
 			.status(StatusCodes.OK)
 			.json(new ApiResponse(true, 'Product updated successfully', updatedProduct));
 	});
+	deleteProductHandler = asyncHandler(async (req, res) => {
+		console.log(`[AuthController] delete product request received with id: ${req.params.id}`);
+		// Delegate core logic to service layer
+		await productService.delete(req.params.id);
+
+		return res.status(StatusCodes.OK).json(new ApiResponse(true, 'Product deleted successfully'));
+	});
 }
 
 module.exports = new ProductController();
