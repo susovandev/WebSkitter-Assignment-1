@@ -1,5 +1,5 @@
 const express = require('express');
-const constants = require('./constant');
+const constants = require('./constants');
 
 const productRoutes = require('./routes/product.routes');
 const routeNotFoundHandler = require('./middlewares/404.middleware');

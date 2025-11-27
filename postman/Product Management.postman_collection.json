@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "c2c968c4-1100-48fc-9cd3-9d7a3d4a469f",
+		"name": "Product Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37108184",
+		"_collection_link": "https://cohort-8914.postman.co/workspace/Microservices~f424e19b-8ad4-4d3d-b8d5-35f84237b180/collection/37108184-c2c968c4-1100-48fc-9cd3-9d7a3d4a469f?action=share&source=collection_link&creator=37108184"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{$randomProductName}}\",\r\n    \"description\": \"{{$randomLoremSentence}}\",\r\n    \"price\": {{$randomPrice}},\r\n    \"category\": \"{{$randomProductMaterial}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Product details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products/6927cd40536ffa5418058a24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"6927cd40536ffa5418058a24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products/6927cd40536ffa5418058a24",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"6927cd40536ffa5418058a24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": {{$randomPrice}},\r\n    \"name\": \"{{$randomProductName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products/69281f5b51ee2ec979e9878b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"69281f5b51ee2ec979e9878b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "x",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,7 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('../utils/asyncHandler.utils');
 const ApiResponse = require('../utils/apiResponse.utils');
-const productService = require('../service/product.service');
+const productService = require('../services/product.service');
 
 class ProductController {
 	getProductsHandler = asyncHandler(async (req, res) => {
@@ -24,6 +24,7 @@ class ProductController {
 	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
+			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,
 			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,
 		);
 		// Delegate core logic to service layer
