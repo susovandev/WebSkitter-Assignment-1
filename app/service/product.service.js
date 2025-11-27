@@ -33,17 +33,32 @@ class ProductService {
 		return product;
 	}
 	/**
-	 * @param {Object} product
+	 * @param {Object} productData
 	 * @description Save product to MongoDB.
 	 * @throws {ApiError} if product creation fails.
-	 * @returns {Object} newly created product.
+	 * @returns {Object} newly created product Object.
 	 */
-	async create(product) {
-		const newProduct = await this.productModel.create(product);
+	async create(productData) {
+		const newProduct = await this.productModel.create(productData);
 		if (!newProduct) {
 			throw new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, 'Product creation failed');
 		}
 		return newProduct;
+	}
+	/**
+	 * @param {Object} productData
+	 * @description Update an existing product.
+	 * @throws {ApiError} if product not found.
+	 * @returns {Object} updated product 	Object.
+	 */
+	async update(productId, productData) {
+		const product = await this.productModel.findByIdAndUpdate({ _id: productId }, productData, {
+			new: true,
+		});
+		if (!product) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Product not found');
+		}
+		return product;
 	}
 }
 

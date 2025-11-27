@@ -33,6 +33,17 @@ class ProductController {
 			.status(StatusCodes.CREATED)
 			.json(new ApiResponse(true, 'Product created successfully', newProduct));
 	});
+	updateProductHandler = asyncHandler(async (req, res) => {
+		console.log(
+			`[AuthController] update product request received with body: ${JSON.stringify(req.body)} and id: ${req.params.id}`,
+		);
+		// Delegate core logic to service layer
+		const updatedProduct = await productService.update(req.params.id, req.body);
+
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(true, 'Product updated successfully', updatedProduct));
+	});
 }
 
 module.exports = new ProductController();

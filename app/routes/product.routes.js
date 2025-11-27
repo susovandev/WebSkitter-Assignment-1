@@ -9,7 +9,6 @@ const router = express.Router();
  * @description Retrieve all products.
  */
 router.route('/').get(productController.getProductsHandler);
-
 /**
  * @route GET http://localhost:5000/api/products/:id
  * @description Get a product by its ID.
@@ -20,7 +19,6 @@ router
 		validateSchema(productValidation.getProductByIdSchema, 'params'),
 		productController.getProductByIdHandler,
 	);
-
 /**
  * @route POST http://localhost:5000/api/products
  * @description Save product to MongoDB.
@@ -30,6 +28,17 @@ router
 	.post(
 		validateSchema(productValidation.createProductSchema, 'body'),
 		productController.createProductHandler,
+	);
+/**
+ * @route PUT http://localhost:5000/api/products/:id
+ * @description Update an existing product.
+ */
+router
+	.route('/:id')
+	.put(
+		validateSchema(productValidation.getProductByIdSchema, 'params'),
+		validateSchema(productValidation.updateProductSchema, 'body'),
+		productController.updateProductHandler,
 	);
 
 module.exports = router;
