@@ -19,7 +19,19 @@ class ProductService {
 
 		return productList;
 	}
+	/**
+	 * @description Get a product by its ID.
+	 * @throws {ApiError} if product is not found.
+	 * @returns {Object} product object.
+	 */
+	async getById(productId) {
+		const product = await this.productModel.findById({ _id: productId });
+		if (!product) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
+		}
 
+		return product;
+	}
 	/**
 	 * @param {Object} product
 	 * @description Save product to MongoDB.

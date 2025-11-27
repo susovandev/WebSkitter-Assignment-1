@@ -13,6 +13,15 @@ class ProductController {
 			.status(StatusCodes.OK)
 			.json(new ApiResponse(true, 'Products fetched successfully', products));
 	});
+	getProductByIdHandler = asyncHandler(async (req, res) => {
+		console.log(`[AuthController] Fetch product by id request received with id: ${req.params.id}`);
+		// Delegate core logic to service layer
+		const product = await productService.getById(req.params.id);
+
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(true, 'Product fetched successfully', product));
+	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
 			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,

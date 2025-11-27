@@ -11,6 +11,17 @@ const router = express.Router();
 router.route('/').get(productController.getProductsHandler);
 
 /**
+ * @route GET http://localhost:5000/api/products/:id
+ * @description Get a product by its ID.
+ */
+router
+	.route('/:id')
+	.get(
+		validateSchema(productValidation.getProductByIdSchema, 'params'),
+		productController.getProductByIdHandler,
+	);
+
+/**
  * @route POST http://localhost:5000/api/products
  * @description Save product to MongoDB.
  */
