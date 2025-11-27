@@ -7,10 +7,24 @@ class ProductService {
 	}
 
 	/**
+	 * @description Retrieve all products.
+	 * @throws {ApiError} if products is undefined.
+	 * @returns {Array} list of products.
+	 */
+	async getAll() {
+		const productList = await this.productModel.find({}).sort({ createdAt: -1 }); // sort by createdAt in descending order
+		if (!productList) {
+			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
+		}
+
+		return productList;
+	}
+
+	/**
 	 * @param {Object} product
-	 * @description creates a new product
-	 * @throws {ApiError} if product creation fails
-	 * @returns {Object} newly created product
+	 * @description Save product to MongoDB.
+	 * @throws {ApiError} if product creation fails.
+	 * @returns {Object} newly created product.
 	 */
 	async create(product) {
 		const newProduct = await this.productModel.create(product);

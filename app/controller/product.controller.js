@@ -4,6 +4,15 @@ const ApiResponse = require('../utils/apiResponse.utils');
 const productService = require('../service/product.service');
 
 class ProductController {
+	getProductsHandler = asyncHandler(async (req, res) => {
+		console.log(`[AuthController] Fetch all products request received`);
+		// Delegate core logic to service layer
+		const products = await productService.getAll();
+
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(true, 'Products fetched successfully', products));
+	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
 			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,

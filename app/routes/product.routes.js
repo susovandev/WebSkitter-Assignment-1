@@ -5,8 +5,14 @@ const productValidation = require('../validation/product.validation');
 const router = express.Router();
 
 /**
+ * @route GET http://localhost:5000/api/products
+ * @description Retrieve all products.
+ */
+router.route('/').get(productController.getProductsHandler);
+
+/**
  * @route POST http://localhost:5000/api/products
- * @description Create a new product
+ * @description Save product to MongoDB.
  */
 router
 	.route('/')
