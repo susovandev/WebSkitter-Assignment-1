@@ -20,6 +20,7 @@ class ProductService {
 		return productList;
 	}
 	/**
+	 * @param {String} productId
 	 * @description Get a product by its ID.
 	 * @throws {ApiError} if product is not found.
 	 * @returns {Object} product object.

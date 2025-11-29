@@ -384,12 +384,18 @@ import this collection into Postman to quickly access and test all the available
 The API is documented using Swagger (OpenAPI Specification). You can find the Swagger YAML file at
 `docs/swagger.yaml`.
 
-## SWAGGER DOCUMENTATION INCLUDES:
+### 🔗 Swagger UI (Interactive API Docs)
+
+Once the server is running, you can access the Swagger UI here:
+
+👉 **http://localhost:5000/api-docs**
+
+### SWAGGER DOCUMENTATION INCLUDES:
 
 - Detailed information about each API endpoint
 - Request and response examples
 - Error responses
 
-## 👉 **[Swagger Documentation](./docs/swagger.yaml)**
+## 👉 **[Swagger Documentation (YAML)](./docs/swagger.yaml)**
 
 ---

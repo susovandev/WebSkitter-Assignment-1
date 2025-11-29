@@ -25,7 +25,6 @@ class ProductController {
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
 			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,
-			`[AuthController] create product request received with body: ${JSON.stringify(req.body)}`,
 		);
 		// Delegate core logic to service layer
 		const newProduct = await productService.create(req.body);
