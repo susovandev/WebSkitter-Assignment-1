@@ -10,6 +10,7 @@ const globalErrorHandler = (err, req, res, next) => {
 	// Mongoose validation error
 	if (err instanceof mongoose.Error.ValidationError) {
 		return res.status(StatusCodes.BAD_REQUEST).json({
+			statusCode: StatusCodes.BAD_REQUEST,
 			success: false,
 			message: err.message,
 			...(config.NODE_ENV === 'development' && { stack: err.stack }),

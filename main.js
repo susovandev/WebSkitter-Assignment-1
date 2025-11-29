@@ -7,6 +7,7 @@ connectDB()
 	.then(() => {
 		app.listen(config.PORT, () => {
 			console.log(`Server running in ${config.NODE_ENV} mode on http://localhost:${config.PORT}`);
+			console.log(`API Documentation available at http://localhost:${config.PORT}/api-docs`);
 		});
 	})
 	.catch((error) => {

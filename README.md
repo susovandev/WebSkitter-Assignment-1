@@ -9,8 +9,9 @@ A REST API for managing products using Node.js backend built using **Express**, 
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongodb&logoColor=white" />
   <img src="https://img.shields.io/badge/Joi-008080?style=for-the-badge&logo=joomla&logoColor=white" />
-  <img src="https://img.shields.io/badge/dotenv-000000?style=for-the-badge&logo=dotenv&logoColor=white" />
-  <img src="https://img.shields.io/badge/prettier-000000?style=for-the-badge&logo=prettier&logoColor=white" />
+  <img src="https://img.shields.io/badge/dotenv-000000?style=for-the-badge&logo=dotenv&logoColor=yellow" />
+  <img src="https://img.shields.io/badge/prettier-000000?style=for-the-badge&logo=prettier&logoColor=purple" />
+  <img src="https://img.shields.io/badge/Swagger-000000?style=for-the-badge&logo=swagger&logoColor=green" />
 </div>
 
 ---
@@ -29,6 +30,7 @@ A REST API for managing products using Node.js backend built using **Express**, 
 - [Error Handling](#error-handling)
 - [Validation Rules](#validation-rules)
 - [Postman Collection](#postman-collection)
+- [Swagger Documentation](#swagger-documentation)
 
 ---
 
@@ -52,7 +54,8 @@ utility classes.
 ✅ Global Error Handling Middleware  
 ✅ Async Handler Wrapper  
 ✅ ApiError & ApiResponse Utility Classes  
-✅ Clean Folder Structure
+✅ Clean Folder Structure  
+✅ Swagger Documentation (YAML)
 
 ---
 
@@ -98,6 +101,8 @@ app/
 │  └─ product.routes.js
 └─ app.js
 main.js
+docs/
+└─ swagger.yaml
 package.json
 package-lock.json
 README.md
@@ -116,7 +121,8 @@ Create a `.env` file in the root directory and add the following variables:
 
 ```plaintext
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/products
+DATABASE_URI=mongodb://localhost:27017
+DATABASE_NAME=products
 NODE_ENV=development
 ```
 
@@ -182,7 +188,7 @@ Content-Type: application/json
 {
   "name": "Sample Product",
   "description": "This is a sample product.",
-  "price": 19.99,
+  "price": 200,
   "category": "Electronics",
   "inStock": true
 }
@@ -199,7 +205,7 @@ Content-Type: application/json
     "_id": "60c72b2f9b1d8e001c8e4b8a",
     "name": "Sample Product",
     "description": "This is a sample product.",
-    "price": 19.99,
+    "price": 200,
     "category": "Electronics",
     "inStock": true,
     "createdAt": "2024-06-01T12:00:00.000Z",
@@ -230,7 +236,7 @@ Content-Type: application/json
       "_id": "60c72b2f9b1d8e001c8e4b8a",
       "name": "Sample Product",
       "description": "This is a sample product.",
-      "price": 19.99,
+      "price": 200,
       "category": "Electronics",
       "inStock": true,
       "createdAt": "2024-06-01T12:00:00.000Z",
@@ -240,7 +246,7 @@ Content-Type: application/json
       "_id": "60c72b2f9b1d8e001c8e4b8b",
       "name": "Another Product",
       "description": "This is another product.",
-      "price": 29.99,
+      "price": 5499,
       "category": "Clothing",
       "inStock": false,
       "createdAt": "2024-06-01T12:00:00.000Z",
@@ -270,7 +276,7 @@ Content-Type: application/json
     "_id": "60c72b2f9b1d8e001c8e4b8a",
     "name": "Sample Product",
     "description": "This is a sample product.",
-    "price": 19.99,
+    "price": 499,
     "category": "Electronics",
     "inStock": true,
     "createdAt": "2024-06-01T12:00:00.000Z",
@@ -287,7 +293,7 @@ Content-Type: application/json
 PUT /api/products/60c72b2f9b1d8e001c8e4b8a HTTP/1.1
 Content-Type: application/json
 {
-  "price": 24.99,
+  "price": 499,
   "inStock": false
 }
 ```
@@ -303,7 +309,7 @@ Content-Type: application/json
     "_id": "60c72b2f9b1d8e001c8e4b8a",
     "name": "Sample Product",
     "description": "This is a sample product.",
-    "price": 24.99,
+    "price": 499,
     "category": "Electronics",
     "inStock": false,
     "createdAt": "2024-06-01T12:00:00.000Z",
@@ -328,6 +334,7 @@ Content-Type: application/json
 {
   "success": true,
   "message": "Product deleted successfully."
+  "data": null
 }
 ```
 
@@ -362,9 +369,27 @@ file.
 - `inStock`: Optional, boolean
 
 ---
-## 📬 Postman Collection
-A Postman collection is provided in the `postman/Product Management.postman_collection.json` file. You can download this file and import it into Postman to easily test the API endpoints. 
-You can import this collection into Postman to quickly access and test all the available API routes.
 
-👉 **[Download Postman Collection](./postman/Product%20Management.postman_collection.json)**  
+## 📬 Postman Collection
+
+A Postman collection is provided in the `postman/ProductManagementCRUD.json` file.
+You can download this file and import it into Postman to easily test the API endpoints. You can
+import this collection into Postman to quickly access and test all the available API routes.
+
+## 👉 **[Download Postman Collection](./postman/ProductManagementCRUD.json)**
+---
+
+## 📚 Swagger Documentation
+
+The API is documented using Swagger (OpenAPI Specification). You can find the Swagger YAML file at
+`docs/swagger.yaml`.
+
+## SWAGGER DOCUMENTATION INCLUDES:
+
+- Detailed information about each API endpoint
+- Request and response examples
+- Error responses
+
+## 👉 **[Swagger Documentation](./docs/swagger.yaml)**
+
 ---

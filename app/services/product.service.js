@@ -13,7 +13,7 @@ class ProductService {
 	 */
 	async getAll() {
 		const productList = await this.productModel.find({}).sort({ createdAt: -1 }); // sort by createdAt in descending order
-		if (!productList) {
+		if (!productList.length) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
 		}
 
@@ -25,7 +25,7 @@ class ProductService {
 	 * @returns {Object} product object.
 	 */
 	async getById(productId) {
-		const product = await this.productModel.findById({ _id: productId });
+		const product = await this.productModel.findById(productId);
 		if (!product) {
 			throw new ApiError(StatusCodes.NOT_FOUND, 'Products not found');
 		}

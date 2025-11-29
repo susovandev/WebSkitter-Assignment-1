@@ -11,7 +11,7 @@ class ProductController {
 
 		return res
 			.status(StatusCodes.OK)
-			.json(new ApiResponse(true, 'Products fetched successfully', products));
+			.json(new ApiResponse(true, 'Products retrieved successfully', products));
 	});
 	getProductByIdHandler = asyncHandler(async (req, res) => {
 		console.log(`[AuthController] Fetch product by id request received with id: ${req.params.id}`);
@@ -20,7 +20,7 @@ class ProductController {
 
 		return res
 			.status(StatusCodes.OK)
-			.json(new ApiResponse(true, 'Product fetched successfully', product));
+			.json(new ApiResponse(true, 'Product retrieved successfully', product));
 	});
 	createProductHandler = asyncHandler(async (req, res) => {
 		console.log(
@@ -50,7 +50,9 @@ class ProductController {
 		// Delegate core logic to service layer
 		await productService.delete(req.params.id);
 
-		return res.status(StatusCodes.OK).json(new ApiResponse(true, 'Product deleted successfully'));
+		return res
+			.status(StatusCodes.OK)
+			.json(new ApiResponse(true, 'Product deleted successfully', null));
 	});
 }
 

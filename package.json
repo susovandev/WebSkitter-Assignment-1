@@ -19,7 +19,9 @@
 		"express": "^5.1.0",
 		"http-status-codes": "^2.3.0",
 		"joi": "^18.0.2",
-		"mongoose": "^9.0.0"
+		"mongoose": "^9.0.0",
+		"swagger-ui-express": "^5.0.1",
+		"yamljs": "^0.3.0"
 	},
 	"devDependencies": {
 		"prettier": "^3.6.2"
